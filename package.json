@@ -9,7 +9,10 @@
   "author": "Sivakumar",
   "license": "ISC",
   "babel": {
-    "presets": ["env", "react"]
+    "presets": [
+      "env",
+      "react"
+    ]
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -23,6 +26,7 @@
     "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }
