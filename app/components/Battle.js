@@ -1,23 +1,18 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 var Link = require('react-router-dom').Link;
+var PlayerPreview = require('./PlayerPreview');
 
 function Player(props) {
 	return (
-		<div className='column'>
-			<img 
-			 	className='avatar'
-				src={props.avatar}
-				alt={'Avatar for '+props.username}
-			/>
-			<h2>{'@'+props.username}</h2>
-			<button 
+		<PlayerPreview username={props.username} avatar={props.avatar}>
+			<button
 				className='reset'
 				onClick={props.onReset.bind(null, props.id)}
 			>
 			Reset
 			</button>
-		</div>
+		</PlayerPreview>
 	)
 }
 
@@ -66,7 +61,7 @@ class PlayerInput extends React.Component {
 				<label className='header' htmlFor='username' >{this.props.label}</label>
 				<input
 					type='text'
-					placeholder='github username'	
+					placeholder='github username'
 					value={this.state.username}
 					onChange={this.handleInputChange}
 				/>
@@ -124,28 +119,28 @@ class Battle extends React.Component {
 			<div>
 				<div className='row'>
 					{!this.state.playerOneName ?
-						<PlayerInput 
+						<PlayerInput
 							id='playerOne'
 							label='Player One'
 							onSubmit={this.handleSubmit}
 						/>
 						: <Player
 							id='playerOne'
-							username={this.state.playerOneName} 
+							username={this.state.playerOneName}
 							avatar={this.state.playerOneImage}
 							onReset={this.handleReset}
 						  />
 					}
 
-					{!this.state.playerTwoName ?	
-						<PlayerInput 
+					{!this.state.playerTwoName ?
+						<PlayerInput
 							id='playerTwo'
 							label='Player Two'
 							onSubmit={this.handleSubmit}
 						/>
 						: <Player
 							id='playerTwo'
-							username={this.state.playerTwoName} 
+							username={this.state.playerTwoName}
 							avatar={this.state.playerTwoImage}
 							onReset={this.handleReset}
 						  />
@@ -153,11 +148,11 @@ class Battle extends React.Component {
 				</div>
 				<div>
 					{this.state.playerOneName && this.state.playerTwoName &&
-					<Link 
+					<Link
 						className='button'
 						to={this.props.match.path +'/result?playerOneName='+this.state.playerOneName+'&playerTwoName='+this.state.playerTwoName}>
 						Battle
-					</Link> 
+					</Link>
 					}
 				</div>
 			</div>
